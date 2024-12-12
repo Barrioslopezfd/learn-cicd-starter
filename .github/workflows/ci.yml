@@ -40,5 +40,5 @@ jobs:
         run: test -z $(go fmt ./...)
 
       - name: Run staticckeck
-        run: staticckeck ./...
+        run: staticcheck ./...
 
