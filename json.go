@@ -31,6 +31,6 @@ func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) {
 	if err != nil {
 		log.Printf("Error writting data: %s", err)
 		w.WriteHeader(500)
-		return 
+		return
 	}
 }
