@@ -1,10 +1,10 @@
-on:
-  push:
-    branches: [main]
+  on:
+    push:
+      branches: [main]
 
-jobs:
-  deploy:
-    name: Deploy
+  jobs:
+    deploy:
+      name: Deploy
     runs-on: ubuntu-latest
 
     steps:
@@ -32,3 +32,6 @@ jobs:
 
       - name: Build and push Docker image
         run: gcloud builds submit --tag us-central1-docker.pkg.dev/notely-demo/notely-ar-repo/notely:latest .
+
+      - name: Deploy to Cloud Run
+        run: gcloud run deploy notely --image us-central1-docker.pkg.dev/notely-demo/notely-ar-repo/notely:latest --region us-central1 --allow-unauthenticated --project notely-demo --max-instances=4
